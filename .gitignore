@@ -1,0 +1,85 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints
+
+# Databricks
+.databricks/
+databricks.cfg
+.databrickscfg
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Data files (large datasets)
+data/processed/*
+!data/processed/.gitkeep
+*.parquet
+*.csv
+*.tsv
+data/imdb_full/
+
+# Model files (too large for git)
+models/
+*.bin
+*.pt
+*.pth
+*.h5
+*.safetensors
+
+# Results and outputs
+results/submissions/*
+!results/submissions/.gitkeep
+results/visualizations/*
+!results/visualizations/.gitkeep
+*.log
+
+# Environment variables
+.env
+.env.local
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Temporary files
+tmp/
+temp/
+*.tmp

@@ -1,0 +1,70 @@
+# Model Configuration for LLM Prompt Engineering Competition
+
+# Model Settings
+model:
+  name: "google/flan-t5-base"  # HuggingFace model identifier
+  cache_dir: "/dbfs/FileStore/llm-course/models"  # Where to cache model files
+  
+  # Generation Parameters
+  generation:
+    max_length: 10  # Max tokens to generate (short for classification)
+    num_beams: 1  # Beam search (1 = greedy, faster)
+    temperature: 0.0  # 0 = deterministic, 1 = creative
+    do_sample: false  # Don't use sampling (deterministic)
+    early_stopping: true  # Stop when EOS token is generated
+
+# Dataset Settings
+dataset:
+  name: "imdb"
+  cache_dir: "/dbfs/FileStore/llm-course/data"
+  
+  # Test split configuration
+  test:
+    size: 1000  # Number of test examples
+    seed: 42  # Random seed for reproducibility
+    balanced: true  # Ensure equal positive/negative samples
+  
+  # Sample data for quick testing
+  sample:
+    train_size: 100
+    test_size: 50
+
+# Evaluation Settings
+evaluation:
+  batch_size: 1  # Process one at a time
+  use_cache: false  # Don't cache predictions
+  save_predictions: true  # Save predictions for analysis
+  
+  # Output paths
+  output_dir: "/dbfs/FileStore/llm-course/results"
+  predictions_dir: "/dbfs/FileStore/llm-course/results/submissions"
+  visualizations_dir: "/dbfs/FileStore/llm-course/results/visualizations"
+
+# Scoring Configuration
+scoring:
+  primary_metric: "accuracy"  # Main ranking metric
+  secondary_metric: "f1_score"  # Tiebreaker
+  
+  # Bonus points
+  bonuses:
+    speed_bonus: 0.02  # +2% for fastest
+    creativity_bonus: 0.01  # +1% for creativity (manual)
+    documentation_bonus: 0.01  # +1% for documentation (manual)
+
+# Competition Rules
+competition:
+  max_prompt_length: 1000  # Maximum tokens in prompt
+  submission_deadline: "2024-12-31T17:00:00"  # ISO format
+  allowed_models: ["google/flan-t5-base"]  # Only these models
+  
+  # Restrictions
+  restrictions:
+    no_fine_tuning: true
+    no_external_apis: true
+    no_test_data_access: true
+
+# Logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  save_logs: true
+  log_file: "/dbfs/FileStore/llm-course/logs/evaluation.log"
