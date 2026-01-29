@@ -1,55 +1,48 @@
-# 🚀 Build your first LLM and Prompt Engineering until use case (Text classify - Sentiment Analysis using LLM)
+# 🚀 LLM Sentiment Journey: From Foundation to Specialized NLP
 
 ![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
 ![Framework](https://img.shields.io/badge/Framework-HuggingFace-yellow.svg)
 ![Platform](https://img.shields.io/badge/Platform-Databricks-orange.svg)
 
 ## 📌 Project Overview
-This project documents the development of a high-precision sentiment analysis system. It tracks the journey from basic LLM hyperparameter tuning to identifying failure points in multi-class classification, ending with a professional **SOTA (State-of-the-Art)** hybrid solution.
-
-**Core Business Goal:** To build a generalized system with the **Lowest False Negative rate on the "Negative" class** to protect brand reputation.
+This repository serves as a step-by-step guide for anyone starting from "Zero" in Large Language Models. Instead of just running code, this project demonstrates the **evolution of an AI solution**: starting with basic configurations, discovering model limitations across different datasets, and finally engineering a specialized system to handle complex linguistic nuances.
 
 ---
 
-## 🛠️ Technical Roadmap
+## 🛠️ The Learning Roadmap
 
-### Phase 1: Foundational LLM Configuration (`01_first_llm_Qwen`)
-* **Objective:** Master model control via hyperparameter tuning.
-* **Experiments:** Systematic testing of `temperature` and `top_p`.
-* **Finding:** Higher temperature (e.g., 1.5) increases creativity but causes "hallucinated" labels in structured sentiment tasks.
+### Step 1: Foundational LLM Configuration (`01_first_llm_Qwen`)
+* **The Goal:** Learn how to control LLM behavior through hyperparameters.
+* **Technical Focus:** Hands-on experimentation with `temperature` and `top_p` using **Qwen 2.5**.
+* **Key Lesson:** Understanding how randomness vs. determinism affects output quality in structured tasks.
 
-### Phase 2: The LLM "Nuance Gap" (`02_llm_sentiment`)
-* **The Challenge:** Binary Sentiment (IMDb) vs. 5-Class Granularity (SST-5).
-* **The Insight:** While LLMs handle simple polarity well, zero-shot prompting frequently confuses "Neutral" with "Negative" without advanced few-shot examples or fine-tuning.
+### Step 2: Transitioning to Sentiment Use Cases (`02_llm_sentiment`)
+* **The Goal:** Apply LLMs to real-world text classification.
+* **The Experiment:** * **Easy Task:** Success with Binary Sentiment (Positive/Negative) on the **IMDb dataset**.
+    * **Complex Task:** Identifying limitations when moving to 5-class granularity (**SST-5 dataset**).
+* **Key Lesson:** Discovering the "Nuance Gap"—where zero-shot LLMs begin to struggle with fine-grained emotional labels like "Neutral" vs. "Slightly Negative."
 
-### Phase 3: SOTA Hybrid Architecture & Error Analysis (`2_patiparn_submit`)
-* **Architecture:** Benchmarked **XGBoost** (Multilingual Embeddings), **Fine-tuned BERT** (`wangchanberta`), and Few-Shot LLM baselines.
-* **Advanced Engineering:** * Implemented **Class Weighting** (Total / Classes * Count) to handle data imbalance without oversampling.
-    * Integrated **Auto-Insight Logic** to automatically diagnose model failure modes.
-
-
-
-#### 💡 Error Analysis Insights:
-The system automatically identifies and reports why the model failed on specific test cases:
-* **Negation Bias:** Detection of missed Thai negations (e.g., "ไม่").
-* **Contrastive Logic:** Capturing sentiment shifts caused by "But" (แต่).
-* **Question Context:** Identifying ignored question formats (e.g., "ไหม").
+### Step 3: Professional SOTA & Error Analysis (`2_patiparn_submit`)
+* **The Goal:** Build a production-ready system optimized for business logic.
+* **The Solution:** Transitioned to specialized architectures (**Fine-tuned BERT** and **XGBoost**) to achieve the lowest False Negative rate on critical classes.
+* **Advanced Engineering:** * **Class Weighting:** Managing data imbalance mathematically without needing to oversample or undersample.
+    * **Auto-Insight Logic:** A custom diagnostic layer that automatically explains *why* a model failed by identifying:
+        * **Negation Bias:** Missed Thai negations (e.g., "ไม่").
+        * **Contrastive Logic:** Missed sentiment shifts following "But" (แต่).
+        * **Question Context:** Failures in recognizing question-based sentiment (e.g., "ไหม").
 
 ---
 
-## 📊 Performance Benchmark
-| Approach | Task | Accuracy | Key Strength |
-| :--- | :--- | :--- | :--- |
-| **Qwen 2.5-3B** | Binary | High | Fast, no training required |
-| **Qwen 2.5-3B** | 5-Class | Medium | Struggles with granularity |
-| **Fine-tuned BERT**| 5-Class | **Highest** | **Optimized for Business Logic** |
+## 💡 Why This Project?
+This project shows that AI Engineering is not just about choosing the biggest model—it is about:
+1.  **Configuring** the model correctly for the task.
+2.  **Evaluating** performance across different datasets to find failure points.
+3.  **Engineering** specific solutions (like BERT or Class Weighting) to solve those failure points.
 
----
-
-## 🔮 Future Roadmap: Agentic RAG
-* **Agentic Scraper:** Transitioning to **Crawl4AI** for dynamic web data extraction.
-* **GraphRAG:** Integrating GraphDB to enhance document relationship understanding in RAG systems.
+## 🔮 What's Next?
+* **Agentic Scraper:** Integrating **Crawl4AI** for dynamic data collection.
+* **RAG System:** Building a specialized knowledge retrieval chatbot.
 
 ---
 **Developer:** Patiparn Nualchan  
-**Focus:** AI Engineering | Data Science | RAG Specialist
+**Focus:** AI Engineering | Data Science | NLP Specialist
