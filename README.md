@@ -45,4 +45,4 @@ This project shows that AI Engineering is not just about choosing the biggest mo
 
 ---
 **Developer:** Patiparn Nualchan  
-**Focus:** AI Engineering | Data Science | NLP Specialist
+**Focus:** AI Engineering | Chatbot RAG Specialist | Data Science
